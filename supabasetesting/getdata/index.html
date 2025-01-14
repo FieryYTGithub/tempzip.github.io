@@ -25,6 +25,7 @@
         const json = await getdata()
         console.log(json)
         document.getElementById("data").innerText = json[0].id
+        document.getElementById("error").innerText = json[0].inserted_at
     </script>
 </head>
 
