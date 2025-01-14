@@ -2,14 +2,36 @@
 <html>
 
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script type="module">
+        const { createClient } = supabase
+        const supabaseUrl = 'https://jrrmnluhzleryemrjhrl.supabase.co'
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impycm1ubHVoemxlcnllbXJqaHJsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4MDk5MDUsImV4cCI6MjA1MjM4NTkwNX0.ta97f8ZoddPTefGQJT6d54atM3KNQ_3M2PhKEojnY3w'
+        const _supabase = createClient(supabaseUrl, supabaseKey)
 
+        console.log('Supabase Instance: ', _supabase)
+        async function getdata() {
+            const { data, error } = await _supabase
+                .from('realtable')
+                .select()
+            if (error) {
+                console.error("error oh no error")
+                console.error(error)
+            }
+            if (data) {
+                return data
+            }
+        }
+        const json = await getdata()
+        console.log(json)
+        document.getElementById("data").innerText = json[0].id
+    </script>
 </head>
 
 <body>
-<h1 id="data">thonk</h1>
-<h1 id="error">bigger thonk</h1>
-<script src="startclient.js" type="module"></script>
-<script src="getdata.js" type="module"></script>
+    <h1 id="data">thonk</h1>
+    <h1 id="error">bigger thonk</h1>
+    
 </body>
 
 </html>
