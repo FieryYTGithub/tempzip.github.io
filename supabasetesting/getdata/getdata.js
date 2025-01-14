@@ -1,11 +1,18 @@
-import { createClient } from '@supabase/supabase-js'
-const supabaseUrl = 'https://jrrmnluhzleryemrjhrl.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+import supabase from '/supabasetesting/getdata/startclient.js'
 
-const { data, error } = await supabase
+const getdata = async (params) {
+  
+}() => {
+  const { data, error } = await supabase
   .from('definetly a real table')
   .select()
 
-document.getElementById("data").innerHTML = data
-document.getElementById("error").innerHTML = error
+  if (error) {
+    console.error(error)
+  }
+  if (data) {
+    console.log(data)
+  }
+}
+
+call getdata();
